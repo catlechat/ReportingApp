@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "255458098304",
+    "project_id": "qui-veut-gagner-millionaire",
+    "storage_bucket": "qui-veut-gagner-millionaire.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255458098304:android:10bf99b1af28e316503a65",
+        "android_client_info": {
+          "package_name": "com.ivan.repportingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255458098304-5ccc47loamvvm3s9scmq3cl1jt2dt5k7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1VEosgSQoS16Rc-bwqmOZ_r8LfaTxX0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255458098304-5ccc47loamvvm3s9scmq3cl1jt2dt5k7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
