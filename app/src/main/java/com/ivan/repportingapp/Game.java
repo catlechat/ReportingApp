@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.Random;
 
 public class Game extends AppCompatActivity {
@@ -26,11 +28,16 @@ public class Game extends AppCompatActivity {
     private Button back_to, answer1, answer2, answer3, answerTrue;
     //
     int i;
+    //ANALYTICS
+    FirebaseAnalytics mFirebaseAnalytics;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+
         setContentView(R.layout.activity_game);
 
         timer = findViewById(R.id.chrono);
@@ -106,6 +113,11 @@ public class Game extends AppCompatActivity {
                         .setPositiveButton(getResources().getString(R.string.pop_yes), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+                                //ANALYTICS
+                                // Obtain the FirebaseAnalytics instance.
+                                Bundle bundle = new Bundle();
+                                bundle.putInt(FirebaseAnalytics.Param.NUMBER_OF_PASSENGERS, ANSWERS_TOTAL);
+                                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
                                 MainActivity.score = 0;
                                 Intent j = new Intent(Game.this, MainActivity.class);
                                 startActivity(j);

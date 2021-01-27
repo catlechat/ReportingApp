@@ -10,6 +10,9 @@ import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
+
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -27,9 +30,22 @@ public class MainActivity extends AppCompatActivity {
     public static Question q3 = new Question("What is the name of this app creator ?","Luis","Pierre",
             "Miyuki","Ivan");
 
+
+    //ANALYTICS
+
+    private FirebaseAnalytics mFirebaseAnalytics;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        //ANALYTICS
+        // Obtain the FirebaseAnalytics instance.
+        Bundle parameters = new Bundle();
+        parameters.putString(FirebaseAnalytics.Event.LEVEL_START, "level_start");
+        parameters.putInt("number_questions", questions.size());
+        mFirebaseAnalytics.setDefaultEventParameters(parameters);
 
         setContentView(R.layout.activity_main);
 
@@ -67,6 +83,13 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, About.class);
                 startActivity(i);
                 finish();
+            }
+        });
+
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                FirebaseCrashlytics.getInstance().setCustomKey("str_key", "Ah oui c'est dommage hein !");
+                throw new RuntimeException("Test Crash"); // Force a crash
             }
         });
 

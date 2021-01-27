@@ -8,14 +8,31 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 public class Gameover extends AppCompatActivity {
     private Button back_to_menu, save_score;
     private TextView text, winText;
+
+    //ANALYTICS
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameover);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+
+        //ANALYTICS
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        Bundle bundle = new Bundle();
+        bundle.putInt("score", MainActivity.score);
+        bundle.putString(FirebaseAnalytics.Event.LEVEL_START, "level_start");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
+
 
         back_to_menu = findViewById(R.id.btn_back_to_menu);
         save_score = findViewById(R.id.btn_save_score);
