@@ -29,8 +29,7 @@ public class Gameover extends AppCompatActivity {
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Bundle bundle = new Bundle();
         bundle.putInt("score", MainActivity.score);
-        bundle.putString(FirebaseAnalytics.Event.LEVEL_START, "level_start");
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
 
 
 

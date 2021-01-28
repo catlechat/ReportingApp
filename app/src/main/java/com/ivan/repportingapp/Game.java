@@ -116,7 +116,6 @@ public class Game extends AppCompatActivity {
                                 //ANALYTICS
                                 // Obtain the FirebaseAnalytics instance.
                                 Bundle bundle = new Bundle();
-                                bundle.putInt(FirebaseAnalytics.Param.NUMBER_OF_PASSENGERS, ANSWERS_TOTAL);
                                 mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
                                 MainActivity.score = 0;
                                 Intent j = new Intent(Game.this, MainActivity.class);
